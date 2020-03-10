@@ -26,24 +26,6 @@ server {
     }
 }
 
-server {
-    listen  80;
-    server_name backend.dev www.backend.dev;
-
-    access_log  /var/log/nginx/proxy-access.log;
-    error_log   /var/log/nginx/proxy-error.log;
-
-    location / {
-        proxy_pass http://nginx:8081/;
-        proxy_set_header   X-Real-IP $remote_addr;
-        proxy_set_header   Host $http_host;
-        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-
-    location ~ /\.(ht|svn|git) {
-        deny all;
-    }
-}
 ```
 
 ### `docker-compose.yml`

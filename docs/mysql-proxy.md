@@ -16,10 +16,10 @@ services:
     volumes:
       - ../mysql-data/db:/var/lib/mysql #mysql-data
     environment:
-      MYSQL_ROOT_PASSWORD: yii2advanced
-      MYSQL_DATABASE: yii2advanced
-      MYSQL_USER: yii2advanced
-      MYSQL_PASSWORD: yii2advanced
+      MYSQL_ROOT_PASSWORD: yii2basic
+      MYSQL_DATABASE: yii2basic
+      MYSQL_USER: yii2basic
+      MYSQL_PASSWORD: yii2basic
 ```
 
 within
@@ -37,10 +37,10 @@ services:
     volumes:
       - ../mysql-data/db:/var/lib/mysql #mysql-data
     environment:
-      MYSQL_ROOT_PASSWORD: yii2advanced
-      MYSQL_DATABASE: yii2advanced
-      MYSQL_USER: yii2advanced
-      MYSQL_PASSWORD: yii2advanced
+      MYSQL_ROOT_PASSWORD: yii2basic
+      MYSQL_DATABASE: yii2basic
+      MYSQL_USER: yii2basic
+      MYSQL_PASSWORD: yii2basic
   db:
     image: bscheshir/mysqlproxy:0.8.5
     expose:

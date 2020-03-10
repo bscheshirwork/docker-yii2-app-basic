@@ -4,7 +4,7 @@ Install [docker](https://docs.docker.com/engine/getstarted/step_one/) and [docke
 
 1.Clone project
 ```sh
-$ git clone https://github.com/bscheshirwork/docker-yii2-advanced newproject
+$ git clone https://github.com/bscheshirwork/docker-yii2-basic newproject
 ```
 
 2.Start the `php` service
@@ -30,26 +30,21 @@ cache folder simply linked into containers
 composer update -vv
 ```
 
-2.2.Run yii2 init script (0 - Development) to create local settings (see [preparing-application](https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md#preparing-application) 1-3)
-```sh
-./init
-``` 
-
-2.3.Synchronize db settings (`docker-run/docker-compose.yml`, `php-data/common/config/main-local.php`; `docker-codeception-run/docker-compose.yml`, `php-data/common/config/test-local.php`)
+2.3.Synchronize db settings (`docker-run/docker-compose.yml`, `php-data/config/db.php`; `docker-codeception-run/docker-compose.yml`, `php-data/common/config/test.php`)
 `php-data/common/config/main-local.php`
 ```sh
 'db' => [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=db;dbname=yii2advanced',
-    'username' => 'yii2advanced',
-    'password' => 'yii2advanced',
+    'dsn' => 'mysql:host=db;dbname=yii2basic',
+    'username' => 'yii2basic',
+    'password' => 'yii2basic',
     'charset' => 'utf8',
 ],
 ```
 
 For tests we're using the same component `db` with the same connection string because we're using 
 another folder to sync with docker contaner (`mysql-data-test`)
-`php-data/common/config/test-local.php`
+`php-data/config/test.php`
 ```sh
 'db' => [
 ],
@@ -82,7 +77,7 @@ Creating dockerrun_nginx_1
 For xdebug we can use environment 
 ```yml
 XDEBUG_CONFIG: "remote_host=dev-Aspire-V3-772 remote_port=9001"
-PHP_IDE_CONFIG: "serverName=docker-yii2-advanced"
+PHP_IDE_CONFIG: "serverName=docker-yii2-basic"
 ```
 `remote_host` can be your IP address (outside of docker network) or your DNS if you have a dns-server (for example - local dns server or dns-server in your router; possibly you have a domain name like your machine name). Docker will connect to this DNS server from the running php container and resolve it.
 
@@ -92,15 +87,13 @@ PHP_IDE_CONFIG: "serverName=docker-yii2-advanced"
 PHPStorm settings:
 
 Create new Service named <PHP_IDE_CONFIG value>
-`Settings > Languages & Frameworks > PHP > Servers: [Name => yii2advanced]`
-value is equal to `serverName` https://github.com/bscheshirwork/docker-yii2-app-advanced/blob/3cca9ab6521040fffd6fae4c6a8d485fde083b66/docker-run/docker-compose.yml#L14
-(other values (`ip`, `port`) doesn't matter). 
+`Settings > Languages & Frameworks > PHP > Servers: [Name => yii2basic]`
+value is equal to `serverName`(other values (`ip`, `port`) doesn't matter). 
 
 Use path mapping:
 `Settings > Languages & Frameworks > PHP > Servers: [Use path mapping => True, /your/machine/path/to/php-data => /var/www/html]`
 Change debug port from 9000 to 9001
 `Settings > Languages & Frameworks > PHP > Debug: [Debug port => 9001]`
-https://github.com/bscheshirwork/docker-yii2-app-advanced/blob/3cca9ab6521040fffd6fae4c6a8d485fde083b66/docker-run/docker-compose.yml#L13
 `remote_port=9001`
 
 # Upgrade to latest MySQL

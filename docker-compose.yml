@@ -14,12 +14,7 @@ services:
   nginx:
     image: nginx:1.17.8-alpine
     restart: always
-    expose:
-      - "8080"
-      - "8081"
 #    ports: # use nginx-proxy in same network (see ./docs/nginx-proxy.md)
-#      - "8080:8080"
-#      - "8081:8081"
     depends_on:
       - php
     volumes:
@@ -38,7 +33,7 @@ services:
       - ./mysql-data/db:/var/lib/mysql #mysql-data
     environment:
       TZ: Europe/Moscow
-      MYSQL_ROOT_PASSWORD: yii2advanced
-      MYSQL_DATABASE: yii2advanced
-      MYSQL_USER: yii2advanced
-      MYSQL_PASSWORD: yii2advanced
+      MYSQL_ROOT_PASSWORD: yii2basic
+      MYSQL_DATABASE: yii2basic
+      MYSQL_USER: yii2basic
+      MYSQL_PASSWORD: yii2basic

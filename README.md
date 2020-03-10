@@ -1,11 +1,11 @@
-Dockerized docker-yii2-advanced
+Dockerized docker-yii2-basic
 ===============================
 
-![Docker](https://github.com/bscheshir/docker-yii2-app-advanced/workflows/Docker/badge.svg)
+![Docker](https://github.com/bscheshir/docker-yii2-app-basic/workflows/Docker/badge.svg)
 
-Docker image composition (docker-compose) for [yii2-app-advanced](https://github.com/yiisoft/yii2-app-advanced):
+Docker image composition (docker-compose) for [yii2-app-basic](https://github.com/yiisoft/yii2-app-basic):
 
-Simplify your way to start with pure yii2-app-advanced template.
+Simplify your way to start with pure yii2-app-basic template.
  
 Use `docker-compose up -d` for run without any debug tools. We can use `nginx-proxy` in same `docker network`.
  
