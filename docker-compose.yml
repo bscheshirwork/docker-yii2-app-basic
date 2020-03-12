@@ -18,9 +18,14 @@ services:
     depends_on:
       - php
     volumes:
-      - ../php-data:/var/www/html #php-data
+      - ./php-data:/var/www/html #php-data
       - ./nginx-conf:/etc/nginx/conf.d #nginx-conf
       - ./nginx-logs:/var/log/nginx #nginx-logs
+    networks:
+      default:
+      nginx-proxy:
+        aliases:
+          - links.bscheshir.ru.nginx
     environment:
       TZ: Europe/Moscow
   db:
@@ -37,3 +42,6 @@ services:
       MYSQL_DATABASE: yii2basic
       MYSQL_USER: yii2basic
       MYSQL_PASSWORD: yii2basic
+networks:
+  nginx-proxy:
+    external: true # docker network create nginx-proxy
